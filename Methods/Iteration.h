@@ -18,7 +18,7 @@ class Iteration: public General<T> {
 	explicit Iteration(std::function<T(T)> f) :General<T>(f){};
    static T  Answer(std::function<T(T)> f, T a, T b, int MaxIter, bool iteration=false) {
         T xnew=T(0), x=T(0), tau=T(0);
-        double epsilon=1e-12;
+        double epsilon=1e-10;
         Iteration I(f, a, b);
         I.FindNewAB();
         x=(I.a+I.b)/2;

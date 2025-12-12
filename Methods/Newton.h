@@ -16,7 +16,7 @@ class Newton: public General<T> {
     Newton(std::function<T(T)> f, T a, T b) :General<T>(f,a,b){}
     explicit Newton(std::function<T(T)> f) :General<T>(f){}
     static T Answer(std::function<T(T)> f, T a, T b, int r=1, int MaxIter=1000, bool Iteration=false) {
-        double epsilon = 1e-12;
+        double epsilon = 1e-10;
         Newton N(f, a, b);
         N.FindNewAB();
         T x0;

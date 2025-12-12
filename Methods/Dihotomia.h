@@ -15,7 +15,7 @@ public:
     Dihotomia(std::function<T(T)> f, T a, T b) :General<T>(f,a,b){}
     static T Answer(std::function<T(T)> f, T a, T b, int MaxIter, bool Iteration=false){
         Dihotomia dih(f, a, b);
-        double epsilon=1e-12;
+        double epsilon=1e-10;
         dih.FindNewAB();
         T r;
         int i;

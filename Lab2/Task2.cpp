@@ -12,7 +12,7 @@ using namespace std;
 int main(){
     int r=1;
     std::fstream File;
-    std::string name[3] {"Newton", "Dihoda", "Iteration"};
+    std::string name[3] {"Newton", "Dihotamia", "Iteration"};
     File.open("../Tau(V0).txt",std::ios::out);
     double a=1, omega=1, l0=5, V=0, V0=1;
     std::function<double(double)> f([&](double t){return a*sin(omega*t)-l0+V*t;});
