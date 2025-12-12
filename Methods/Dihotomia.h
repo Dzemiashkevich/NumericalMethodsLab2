@@ -13,7 +13,7 @@ class Dihotomia:public General<T>{
 public:
     explicit Dihotomia(std::function<T(T)> f):General<T>(f){}
     Dihotomia(std::function<T(T)> f, T a, T b) :General<T>(f,a,b){}
-    static T Answer(std::function<T(T)> f, T a, T b, int MaxIter){
+    static T Answer(std::function<T(T)> f, T a, T b, int MaxIter, bool Iteration=false){
         Dihotomia dih(f, a, b);
         double epsilon=1e-12;
         dih.FindNewAB();
@@ -30,7 +30,9 @@ public:
             else{break;}
             if (abs(dih.a-dih.b)<epsilon){break;}
         }
-        std::cout<<i<<"\n";
+        if (Iteration==true) {
+            std::cout<<i<<"\n";
+        }
         return (dih.a+dih.b)/2;
     }
 

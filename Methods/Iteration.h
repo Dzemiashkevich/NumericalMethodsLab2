@@ -16,7 +16,7 @@ class Iteration: public General<T> {
 
     Iteration(std::function<T(T)> f, T a, T b) :General<T>(f,a,b){};
 	explicit Iteration(std::function<T(T)> f) :General<T>(f){};
-   static T  Answer(std::function<T(T)> f, T a, T b, int MaxIter) {
+   static T  Answer(std::function<T(T)> f, T a, T b, int MaxIter, bool iteration=false) {
         T xnew=T(0), x=T(0), tau=T(0);
         double epsilon=1e-12;
         Iteration I(f, a, b);
@@ -42,7 +42,9 @@ class Iteration: public General<T> {
         for(i=0;i<=MaxIter; ++i){
             xnew=f2(x);
             if (abs(xnew - x) < epsilon) {
-                std::cout<<i<<"\n";
+                if (iteration==true) {
+                    std::cout<<i<<"\n";
+                }
                 return xnew;
             }
             x=xnew;

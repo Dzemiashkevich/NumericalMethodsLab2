@@ -15,7 +15,7 @@ class Newton: public General<T> {
     public:
     Newton(std::function<T(T)> f, T a, T b) :General<T>(f,a,b){}
     explicit Newton(std::function<T(T)> f) :General<T>(f){}
-    static T Answer(std::function<T(T)> f, T a, T b, int r=1, int MaxIter=1000) {
+    static T Answer(std::function<T(T)> f, T a, T b, int r=1, int MaxIter=1000, bool Iteration=false) {
         double epsilon = 1e-12;
         Newton N(f, a, b);
         N.FindNewAB();
@@ -50,7 +50,9 @@ class Newton: public General<T> {
             newx = x - fx / dfx;
 
             if (abs(newx - x) < epsilon) {
-                std::cout<<i<<"\n";
+                if (Iteration==true) {
+                    std::cout<<i<<"\n";
+                }
                 return newx;
             }
             oldx=x;
